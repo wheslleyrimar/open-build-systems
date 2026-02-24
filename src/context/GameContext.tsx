@@ -7,6 +7,7 @@ import {
   xpToLevel,
   xpProgressInLevel,
 } from '../types/game'
+import { lessons } from '../data/lessons'
 
 const initialState: GameState = {
   xp: 0,
@@ -103,7 +104,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
           if (idx >= 0) badges[idx] = { ...badges[idx], unlockedAt: Date.now() }
         }
 
-        const totalLessons = 5 // match lesson count
+        const totalLessons = lessons.length
         if (completedCount >= totalLessons && !badges.find((b) => b.id === 'all-lessons')?.unlockedAt) {
           const idx = badges.findIndex((b) => b.id === 'all-lessons')
           if (idx >= 0) badges[idx] = { ...badges[idx], unlockedAt: Date.now() }

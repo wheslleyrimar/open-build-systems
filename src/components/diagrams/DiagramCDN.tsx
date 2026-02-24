@@ -8,8 +8,13 @@ export function DiagramCDN() {
           <stop offset="0%" stopColor="#06b6d4" />
           <stop offset="100%" stopColor="#22d3ee" />
         </linearGradient>
+        <clipPath id="cdn-origin"><rect x="160" y="20" width="80" height="50" rx="8" /></clipPath>
+        <clipPath id="cdn-edge"><rect x="140" y="95" width="120" height="44" rx="8" /></clipPath>
+        <clipPath id="cdn-pop1"><circle cx="80" cy="172" r="22" /></clipPath>
+        <clipPath id="cdn-pop2"><circle cx="200" cy="172" r="22" /></clipPath>
+        <clipPath id="cdn-pop3"><circle cx="320" cy="172" r="22" /></clipPath>
       </defs>
-      <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+      <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} clipPath="url(#cdn-origin)">
         <rect x="160" y="20" width="80" height="50" rx="8" fill="var(--color-surface)" stroke="#22d3ee" strokeWidth="2" />
         <text x="200" y="52" textAnchor="middle" fill="#e2e8f0" fontSize="12">Origin</text>
       </motion.g>
@@ -19,6 +24,7 @@ export function DiagramCDN() {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4, delay: 0.3 }}
+        clipPath="url(#cdn-edge)"
       >
         <rect x="140" y="95" width="120" height="44" rx="8" fill="url(#cdnGrad)" />
         <text x="200" y="120" textAnchor="middle" fill="white" fontSize="13" fontWeight="700">CDN (Edge)</text>
@@ -29,12 +35,13 @@ export function DiagramCDN() {
         initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.4, delay: 0.55 }} />
       <motion.path d="M 280 117 L 320 155" stroke="#34d399" strokeWidth="2"
         initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.4, delay: 0.6 }} />
-      {[80, 200, 320].map((x, i) => (
+      {[[80, 'cdn-pop1'], [200, 'cdn-pop2'], [320, 'cdn-pop3']].map(([x, clipId], i) => (
         <motion.g
           key={i}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.6 + i * 0.1 }}
+          clipPath={`url(#${clipId})`}
         >
           <circle cx={x} cy="172" r="22" fill="var(--color-surface)" stroke="#34d399" strokeWidth="2" />
           <text x={x} y="176" textAnchor="middle" fill="#e2e8f0" fontSize="9">PoP {i + 1}</text>

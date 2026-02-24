@@ -62,12 +62,25 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
 
-      <footer className="border-t border-[var(--color-border)] py-3 text-center text-slate-500 text-sm">
+      <footer className="border-t border-[var(--color-border)] py-3 text-center text-slate-500 text-sm space-y-1">
         {location.pathname !== '/' && (
-          <Link to="/" className="text-violet-400 hover:text-violet-300 transition">
-            ← Voltar ao mapa
-          </Link>
+          <div>
+            <Link to="/" className="text-violet-400 hover:text-violet-300 transition">
+              ← Voltar ao mapa
+            </Link>
+          </div>
         )}
+        <div>
+          Repositório da comunidade{' '}
+          <a
+            href="https://technapratica.com.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-violet-400 hover:text-violet-300 transition"
+          >
+            Tech na Prática
+          </a>
+        </div>
       </footer>
     </div>
   )

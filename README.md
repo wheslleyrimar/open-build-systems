@@ -1,10 +1,12 @@
 # System Design — Plataforma de ensino gamificada
 
+Este repositório foi criado para a comunidade **[Tech na Prática](https://technapratica.com.br/)** — mentorias e conteúdo aplicado para carreira em tecnologia (arquitetura, carreira e liderança).
+
 Aplicação web para aprender **System Design** com diagramas interativos, visualizações 3D e efeitos de animação, em uma experiência gamificada (XP, níveis, conquistas e sequência de dias).
 
 ## Funcionalidades
 
-- **Diagramas animados**: Load Balancer, Cache, Replicação/Sharding, Microserviços, CDN
+- **Diagramas animados**: Load Balancer, Cache, Replicação/Sharding, Microsserviços, CDN
 - **Cenas 3D**: Cada tópico tem uma visualização 3D interativa (Three.js) — arraste para rotacionar, scroll para zoom
 - **Conteúdo em etapas**: Explicações em passos com animações
 - **Quizzes**: Perguntas ao final de cada lição com pontuação e XP extra
@@ -45,3 +47,7 @@ npm run preview   # preview da build de produção
 - `src/scenes/` — Cenas 3D por tópico
 - `src/context/GameContext.tsx` — Estado de jogo (XP, nível, badges, progresso)
 - `src/data/lessons.ts` — Conteúdo das lições e quizzes
+
+---
+
+**Tech na Prática** — [technapratica.com.br](https://technapratica.com.br/)

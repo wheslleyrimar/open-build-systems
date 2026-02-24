@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import ReactMarkdown from 'react-markdown'
 import { lessons } from '../data/lessons'
+import { diagramExplanations } from '../data/diagramExplanations'
 import { useGame } from '../context/GameContext'
 import { Diagram } from '../components/diagrams'
 import { Scene3DCanvas } from '../components/Scene3DCanvas'
@@ -85,11 +86,23 @@ export function Lesson() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="py-4"
+            className="py-4 space-y-4"
           >
             <div className="bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)] p-6">
               <Diagram name={lesson.diagram} />
             </div>
+            {diagramExplanations[lesson.id] && (
+              <div className="bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)] p-5 text-slate-300 text-sm leading-relaxed [&_strong]:text-white">
+                <ReactMarkdown
+                  components={{
+                    p: ({ children }) => <p className="mb-0">{children}</p>,
+                    strong: ({ children }) => <strong className="text-white font-semibold">{children}</strong>,
+                  }}
+                >
+                  {diagramExplanations[lesson.id]}
+                </ReactMarkdown>
+              </div>
+            )}
           </motion.section>
         )}
 
