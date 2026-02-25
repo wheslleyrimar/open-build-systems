@@ -1,7 +1,8 @@
-import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { Link, useLocation } from 'react-router-dom'
 import { useGame } from '../context/GameContext'
 import { XP_PER_LEVEL } from '../types/game'
+import { ScrollToTop } from './ScrollToTop'
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const { level, streak, xpProgressInLevel, unlockedBadges } = useGame()
@@ -82,6 +83,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </a>
         </div>
       </footer>
+
+      <ScrollToTop />
     </div>
   )
 }
